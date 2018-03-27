@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		0A399BAA206AA2DA001AEE60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A399BA9206AA2DA001AEE60 /* AppDelegate.swift */; };
 		0A399BAD206AA2DA001AEE60 /* MovieQuotes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0A399BAB206AA2DA001AEE60 /* MovieQuotes.xcdatamodeld */; };
-		0A399BAF206AA2DA001AEE60 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A399BAE206AA2DA001AEE60 /* MasterViewController.swift */; };
-		0A399BB1206AA2DA001AEE60 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A399BB0206AA2DA001AEE60 /* DetailViewController.swift */; };
 		0A399BB4206AA2DA001AEE60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A399BB2206AA2DA001AEE60 /* Main.storyboard */; };
 		0A399BB6206AA2DA001AEE60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A399BB5206AA2DA001AEE60 /* Assets.xcassets */; };
 		0A399BB9206AA2DA001AEE60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A399BB7206AA2DA001AEE60 /* LaunchScreen.storyboard */; };
@@ -20,8 +18,6 @@
 		0A399BA6206AA2DA001AEE60 /* MovieQuotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieQuotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A399BA9206AA2DA001AEE60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A399BAC206AA2DA001AEE60 /* MovieQuotes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MovieQuotes.xcdatamodel; sourceTree = "<group>"; };
-		0A399BAE206AA2DA001AEE60 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		0A399BB0206AA2DA001AEE60 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		0A399BB3206AA2DA001AEE60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0A399BB5206AA2DA001AEE60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A399BB8206AA2DA001AEE60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -59,8 +55,6 @@
 			isa = PBXGroup;
 			children = (
 				0A399BA9206AA2DA001AEE60 /* AppDelegate.swift */,
-				0A399BAE206AA2DA001AEE60 /* MasterViewController.swift */,
-				0A399BB0206AA2DA001AEE60 /* DetailViewController.swift */,
 				0A399BB2206AA2DA001AEE60 /* Main.storyboard */,
 				0A399BB5206AA2DA001AEE60 /* Assets.xcassets */,
 				0A399BB7206AA2DA001AEE60 /* LaunchScreen.storyboard */,
@@ -144,8 +138,6 @@
 			files = (
 				0A399BAA206AA2DA001AEE60 /* AppDelegate.swift in Sources */,
 				0A399BAD206AA2DA001AEE60 /* MovieQuotes.xcdatamodeld in Sources */,
-				0A399BAF206AA2DA001AEE60 /* MasterViewController.swift in Sources */,
-				0A399BB1206AA2DA001AEE60 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,7 +280,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = edu.rosehulman.kime2.MovieQuotes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -302,7 +294,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = edu.rosehulman.kime2.MovieQuotes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
