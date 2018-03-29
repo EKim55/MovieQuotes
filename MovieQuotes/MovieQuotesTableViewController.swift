@@ -21,14 +21,14 @@ class MovieQuotesTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add,
                                                             target: self,
                                                             action: #selector(showAddDialog))
         
-//        movieQuotes.append(MovieQuote(quote: "I'll be back", movie: "The Terminator"))
-//        movieQuotes.append(MovieQuote(quote: "Yo Adrian!", movie: "Rocky"))
+        movieQuotes.append(MovieQuote(quote: "I'll be back", movie: "The Terminator"))
+        movieQuotes.append(MovieQuote(quote: "Yo Adrian!", movie: "Rocky"))
         
     }
 
@@ -69,6 +69,14 @@ class MovieQuotesTableViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        if movieQuotes.count == 0 {
+            super.setEditing(false, animated: animated)
+        } else {
+            super.setEditing(editing, animated: animated)
+        }
+    }
 
 //    override func numberOfSections(in tableView: UITableView) -> Int {
 //        return 1
@@ -96,23 +104,27 @@ class MovieQuotesTableViewController: UITableViewController {
     }
 
 
-    /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
-        return true
+        return movieQuotes.count != 0
     }
-    */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            movieQuotes.remove(at: indexPath.row)
+            if movieQuotes.count == 0 {
+                tableView.reloadData()
+                self.setEditing(false, animated: true)
+            } else {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
         }
     }
-    */
+    
 
     /*
     // MARK: - Navigation
