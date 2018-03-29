@@ -11,7 +11,7 @@ import UIKit
 class MovieQuotesTableViewController: UITableViewController {
 
     let movieQuoteCellIdentifier = "MovieQuoteCell"
-    let names = ["Dave", "Kristy", "McKinley", "Keegan", "Bowen", "Neala"]
+    var movieQuotes = [MovieQuote]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,8 +21,48 @@ class MovieQuotesTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add,
+                                                            target: self,
+                                                            action: #selector(showAddDialog))
+        
+        movieQuotes.append(MovieQuote(quote: "I'll be back", movie: "The Terminator"))
+        movieQuotes.append(MovieQuote(quote: "Yo Adrian!", movie: "Rocky"))
+        
     }
 
+    @objc func showAddDialog() {
+        let alertController = UIAlertController(title: "Create a new movie quote",
+                                                message: "",
+                                                preferredStyle: .alert)
+        alertController.addTextField{ (textField) in
+            textField.placeholder = "Quote"
+        }
+        alertController.addTextField{ (textField) in
+            textField.placeholder = "Movie Title"
+        }
+        let cancelAction = UIAlertAction(title: "Cancel",
+                                         style: UIAlertActionStyle.cancel,
+                                         handler: nil)
+        let createQuoteAction = UIAlertAction(title: "Create Quote",
+                                         style: UIAlertActionStyle.default) {
+                                            (action) in
+                                            let quoteTextField = alertController.textFields![0]
+                                            let movieTextField = alertController.textFields![1]
+                                            print("quoteTextField = \(quoteTextField)")
+                                            print("movieTextField = \(movieTextField)")
+                                            let movieQuote = MovieQuote(quote: quoteTextField.text!,
+                                                                        movie: movieTextField.text!)
+                                            self.movieQuotes.insert(movieQuote, at: 0)
+                                            //self.tableView.reloadData();
+                                            self.tableView.insertRows(at: [IndexPath(row:0, section: 0)],
+                                                                      with: UITableViewRowAnimation.top)
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(createQuoteAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
     // MARK: - Table view data source
 
 //    override func numberOfSections(in tableView: UITableView) -> Int {
@@ -30,7 +70,7 @@ class MovieQuotesTableViewController: UITableViewController {
 //    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return names.count
+        return movieQuotes.count
     }
 
 
@@ -38,7 +78,8 @@ class MovieQuotesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: movieQuoteCellIdentifier, for: indexPath)
 
         // Configure the cell...
-        cell.textLabel?.text = names[indexPath.row]
+        cell.textLabel?.text = movieQuotes[indexPath.row].quote
+        cell.detailTextLabel?.text = movieQuotes[indexPath.row].movie
         return cell
     }
 
