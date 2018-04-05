@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
 class MovieQuotesTableViewController: UITableViewController {
 
+    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let movieQuoteCellIdentifier = "MovieQuoteCell"
     let noMovieQuotesCellIdentifier = "NoMovieQuotesCell"
     let showDetailSegueIdentifier = "ShowDetailSegue"
@@ -27,14 +29,11 @@ class MovieQuotesTableViewController: UITableViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add,
                                                             target: self,
                                                             action: #selector(showAddDialog))
-        
-        movieQuotes.append(MovieQuote(quote: "I'll be back", movie: "The Terminator"))
-        movieQuotes.append(MovieQuote(quote: "Yo Adrian!", movie: "Rocky"))
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.updateMovieQuoteArray()
         tableView.reloadData()
     }
 
@@ -58,9 +57,16 @@ class MovieQuotesTableViewController: UITableViewController {
                                             let movieTextField = alertController.textFields![1]
                                             print("quoteTextField = \(quoteTextField)")
                                             print("movieTextField = \(movieTextField)")
-                                            let movieQuote = MovieQuote(quote: quoteTextField.text!,
-                                                                        movie: movieTextField.text!)
-                                            self.movieQuotes.insert(movieQuote, at: 0)
+//                                            let movieQuote = MovieQuote(quote: quoteTextField.text!,
+//                                                                        movie: movieTextField.text!)
+//                                            self.movieQuotes.insert(movieQuote, at: 0)
+                                            let newMovieQuote = MovieQuote(context: self.context)
+                                            newMovieQuote.quote = quoteTextField.text!
+                                            newMovieQuote.movie = movieTextField.text!
+                                            newMovieQuote.created = Date()
+                                            self.save()
+                                            self.updateMovieQuoteArray()
+                                            //self.tableView.reloadData()
                                             if (self.movieQuotes.count == 1) {
                                                 self.tableView.reloadData()
                                             }
@@ -72,6 +78,22 @@ class MovieQuotesTableViewController: UITableViewController {
         alertController.addAction(cancelAction)
         alertController.addAction(createQuoteAction)
         present(alertController, animated: true, completion: nil)
+    }
+    
+    func save() {
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+    }
+    
+    func updateMovieQuoteArray() {
+        // Make a fetch request
+        // Execute the request in a try/catch block
+        let request: NSFetchRequest<MovieQuote> = MovieQuote.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: "created", ascending: false)];
+        do {
+            movieQuotes = try context.fetch(request)
+        } catch {
+            fatalError("Unresolved Core Data error \(error)")
+        }
     }
     
     // MARK: - Table view data source
@@ -120,8 +142,11 @@ class MovieQuotesTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            context.delete(movieQuotes[indexPath.row])
+            save()
+            updateMovieQuoteArray()
             // Delete the row from the data source
-            movieQuotes.remove(at: indexPath.row)
+            // movieQuotes.remove(at: indexPath.row)
             if movieQuotes.count == 0 {
                 tableView.reloadData()
                 self.setEditing(false, animated: true)

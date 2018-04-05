@@ -17,6 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+//        let navController = self.window?.rootViewController as! UINavigationController
+//        let controller = navController.topViewController as! MovieQuotesTableViewController
+//        controller.context = self.persistentContainer.viewContext
         return true
     }
 
