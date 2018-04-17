@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Firebase
 
 class MovieQuoteDetailViewController: UIViewController {
     @IBOutlet weak var quoteLabel: UILabel!
-    
     @IBOutlet weak var movieLabel: UILabel!
     
+    var movieQuoteRef: DocumentReference?
+    var movieQuoteListener: ListenerRegistration!
     var movieQuote: MovieQuote?
     
     override func viewDidLoad() {
@@ -55,7 +57,24 @@ class MovieQuoteDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        updateView()
+        //updateView()
+        movieQuoteListener = movieQuoteRef?.addSnapshotListener({ (documentSnapshot, error) in
+            if let error = error {
+                print("Error getting the document: \(error.localizedDescription)")
+                return
+            }
+            if !documentSnapshot!.exists {
+                print("This document got deleted by someone else.")
+                return
+            }
+            self.movieQuote = MovieQuote(documentSnapshot: documentSnapshot!)
+            self.updateView()
+        })
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        movieQuoteListener.remove()
     }
     
     func updateView() {

@@ -11,6 +11,7 @@
 		0A399BB4206AA2DA001AEE60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A399BB2206AA2DA001AEE60 /* Main.storyboard */; };
 		0A399BB6206AA2DA001AEE60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A399BB5206AA2DA001AEE60 /* Assets.xcassets */; };
 		0A399BB9206AA2DA001AEE60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A399BB7206AA2DA001AEE60 /* LaunchScreen.storyboard */; };
+		0A6BCF9B20864E38001E1A9B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A6BCF9A20864E38001E1A9B /* GoogleService-Info.plist */; };
 		0ABEB58F206D367A008AAA2A /* MovieQuotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABEB58E206D367A008AAA2A /* MovieQuotesTableViewController.swift */; };
 		0ABEB591206D3955008AAA2A /* MovieQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABEB590206D3955008AAA2A /* MovieQuote.swift */; };
 		0ADD78242073D10B00EBC366 /* MovieQuoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADD78232073D10B00EBC366 /* MovieQuoteDetailViewController.swift */; };
@@ -25,6 +26,7 @@
 		0A399BB5206AA2DA001AEE60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A399BB8206AA2DA001AEE60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A399BBA206AA2DA001AEE60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0A6BCF9A20864E38001E1A9B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0ABEB58E206D367A008AAA2A /* MovieQuotesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuotesTableViewController.swift; sourceTree = "<group>"; };
 		0ABEB590206D3955008AAA2A /* MovieQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuote.swift; sourceTree = "<group>"; };
 		0ADD78232073D10B00EBC366 /* MovieQuoteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuoteDetailViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				0A399BBA206AA2DA001AEE60 /* Info.plist */,
 				0ABEB58E206D367A008AAA2A /* MovieQuotesTableViewController.swift */,
 				0ABEB590206D3955008AAA2A /* MovieQuote.swift */,
+				0A6BCF9A20864E38001E1A9B /* GoogleService-Info.plist */,
 				0ADD78232073D10B00EBC366 /* MovieQuoteDetailViewController.swift */,
 			);
 			path = MovieQuotes;
@@ -156,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A399BB9206AA2DA001AEE60 /* LaunchScreen.storyboard in Resources */,
+				0A6BCF9B20864E38001E1A9B /* GoogleService-Info.plist in Resources */,
 				0A399BB6206AA2DA001AEE60 /* Assets.xcassets in Resources */,
 				0A399BB4206AA2DA001AEE60 /* Main.storyboard in Resources */,
 			);
