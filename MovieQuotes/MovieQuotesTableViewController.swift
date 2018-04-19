@@ -36,6 +36,7 @@ class MovieQuotesTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //tableView.reloadData()
+        self.movieQuotes.removeAll()
         quotesListener = quotesRef.order(by: "created", descending: true).limit(to: 50).addSnapshotListener({ (querySnapshot, error) in
             guard let snapshot = querySnapshot else {
                 print("Error fetching quotes. error: \(error!.localizedDescription)")
